@@ -31,10 +31,10 @@ This will indicate the number of CPU cores you have available on your computer t
 
 ## Assessing time saved through parallel programming
 
-Lets assess the potential time saved through parallel programming by creating a test function called slow_square() 
+Lets assess the potential time saved through parallel programming by creating a test function called standard_function() 
 
 ```{r}
-slow_square = 
+standard_function = 
   function(x = 1) {
     x_sq = x^2 
     d = tibble(value = x, value_squared = x_sq)
@@ -49,7 +49,7 @@ Let’s iterate over this function using the standard lapply() method that we’
 
 ```{r}
 tic()
-serial_ex = lapply(1:12, slow_square) %>% bind_rows()
+serial_func = lapply(1:12, standard_function) %>% bind_rows()
 toc()
 ```
 As expected, the iteration took about 24 seconds to run because of the enforced break after every sequential iteration (i.e. Sys.sleep(2)). On the other hand, this means that we can easily speed things up by iterating in parallel.
@@ -60,7 +60,7 @@ Now lets implement the parallel iteration using the future.apply package. Note t
 
 ```{r}
 tic()
-future_ex = future_lapply(1:12, slow_square) %>% bind_rows() #slightly amend the previous lapply() function
+future_func = future_lapply(1:12, standard_function) %>% bind_rows() #slightly amend the previous lapply() function
 toc(log = TRUE)
 ```
 
@@ -74,7 +74,7 @@ If you prefer the purrr::map() family of functions for iteration and are feeling
 
 ```{r}
 tic()
-furrr_ex = future_map_dfr(1:12, slow_square)
+furrr_func = future_map_dfr(1:12, standard_function)
 toc()
 ```
 
