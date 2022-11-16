@@ -16,13 +16,8 @@ The goals of this session are to (1) equip you with conceptual knowledge about w
 
 ## Instructors
 
-<<<<<<< HEAD
 - Maria Fernanda Ortega
 - Danial Riaz
-=======
-- Danial Riaz
-- Fernanda Ortega
->>>>>>> 0a9a9cbfa676430bf2b3d7a195969972238ab0f1
 
 
 ## Further resources
